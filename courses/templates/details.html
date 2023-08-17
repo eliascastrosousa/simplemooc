@@ -43,7 +43,7 @@
 
                 <h4>Duvidas?</h4>
                 <p>
-                    <a href="" class="pure-button">Fale Conosco</a>
+                    <a href="#contato" class="pure-button">Fale Conosco</a>
                 </p>
             </div>
 
@@ -57,7 +57,10 @@
     <div class="pure-g-r content-ribbon" id="contato">
         <div class="pure-u-1">
             <h3>Tire duvidas sobre o Curso</h3>
-            <form class="pure-form pure-form-aligned" method="POST">{% csrf_token %}
+            {% if is_valid %}
+                <p>Você enviou os dados com sucesso.</p>
+            {% endif %}
+            <form action="#contato" class="pure-form pure-form-aligned" method="post">{% csrf_token %}
                 <fieldset>
                     {% for field in form %}
                     <div class="pure-control-group">
