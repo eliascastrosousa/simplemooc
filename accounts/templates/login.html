@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'title' %} Login {% endblock %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" /> {% endblock %}
+
+{% block 'body' %}
+
+<div class="splash">
+    <div class="pure-g-r">
+        <div class="pure-u-1">
+            <div class="l-box splash-text">
+                <h1 class="splash-head">
+                    
+                </h1>
+                <h2 class="splash-subhead">
+                    
+                </h2>
+                <p>
+                    <a href="#" class="pure-button primary-button">Inscreva-se</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+        
+    <div class="pure-g-r content-ribbon" id="contato">
+        <div class="pure-u-1">
+            <h3>Tire duvidas sobre o Curso</h3>
+                <p>Você enviou os dados com sucesso.</p>
+            <form action="#contato" class="pure-form pure-form-aligned" method="post">{% csrf_token %}
+                <fieldset>
+                    {% for field in form %}
+                    <div class="pure-control-group">
+                        {{ field.label_tag }}
+                        {{ field  }}
+                        {% if field.errors %}
+                        <ul class="errorlist">
+                            <li>Este campo é obrigatório</li>
+                        </ul>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    
+                    <div class="pure-control">
+                        <button type="submit" class="pure-button primary-button">Entrar</button>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+        
+    </div>        
+</div>
+{% endblock %}
