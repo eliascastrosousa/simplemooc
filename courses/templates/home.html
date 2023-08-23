@@ -4,55 +4,42 @@
 {% block 'title' %} Cursos {% endblock %}
 
 {% block 'head' %} <link rel="stylesheet" href="{% static 'css/styles.css' %}" /> {% endblock %}
+{% block 'titlebanner' %} Listagem de cursos do SimpleMooc {% endblock %}
+{% block 'subtitlebanner' %} Abaixo a lista de Cursos disponiveis na plataforma {% endblock %}
 
 {% block 'body' %}
-    <div class="splash" style="background-color: #83c5be">
-        <div class="pure-g-r">
-            <div class="pure-u-1">
-                <div class="l-box splash-text">
-                    <h2 >
-                        Listagem de cursos do SimpleMooc
-                        <hr>
-                    </h2>
-                    
-                    <p>
-                        Abaixo a lista de Cursos disponiveis na plataforma
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    {% for item in cursos %}
+
+<section class="section">
     <div class="content">
-        
-        <div class="pure-g-r content-ribbon">
-            <div class="pure-u-1-3">
-                <div class="l-box" style="width: 50%; height: 40%;">
+        {% for item in cursos %}
+        <div class="columns">
+            <div class="column">
+                <div>
                     {% if item.image %}
-                        <a href="{% url 'details' item.slug %}"> <img src="{{item.image.url}}" alt="{{item.name}}" /> </a>
+                    <a href="{% url 'details' item.slug %}"> <img src="{{item.image.url}}" alt="{{item.name}}" /> </a>
                     {% else %}
-                        <a href="{% url 'details' item.slug %}"> <img src="{% static 'img/notfound.jpeg' %}" alt="{% static 'img/notfound.jpeg' %}" /> </a>
+                    <a href="{% url 'details' item.slug %}"> <img src="{% static 'img/notfound.jpeg' %}"
+                            alt="{% static 'img/notfound.jpeg' %}" /> </a>
                     {% endif %}
                 </div>
-                
             </div>
-            <div class="pure-u-2-3">
+            <div class="column">
                 <div class="l-box">
-                    <a href="{% url 'details' item.slug %}"> <h4 class="content-subhead">{{item.name}}</h4></a>
+                    <a href="{% url 'details' item.slug %}">
+                        <h4 class="content-subhead">{{item.name}}</h4>
+                    </a>
                     <h3>{{item.name}}</h3>
                     <p>
                         {{item.descripton|linebreaks}}
                     </p>
-                    <a href="{% url 'details' item.slug %}" class="pure-button primary-button">Ver mais</a>
+                    <a href="{% url 'details' item.slug %}"  class="button is-info">Ver mais</a>
                 </div>
-            
-                    
-                
             </div>
-        </div>        
-    </div>
-    {% empty %}
+
+        </div>
+        <hr>
+
+        {% empty %}
         <div class="splash">
             <div class="pure-g-r">
                 <div class="pure-u-1">
@@ -64,7 +51,10 @@
                 </div>
             </div>
         </div>
-    {%  endfor  %}
-    
-    
+        {% endfor %}
+    </div>
+</section>
+
+
+
 {% endblock %}

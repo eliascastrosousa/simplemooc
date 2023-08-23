@@ -1,49 +1,38 @@
 {% extends "base.html" %}
-
+{% load static %}
+{% block 'title' %} Painel {% endblock %}
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" /> {% endblock %}
+{% block 'titlebanner' %} Dashboard {% endblock %}
+{% block 'subtitlebanner' %} Área para membros {% endblock %}
 {% block 'body' %}
 
-<div class="splash" style="background-color: #83c5be;">
-    <div class="pure-g-r">
-        <div class="pure-u-1">
-            <div class="l-box splash-text">
-                <h1 class="splash-head">
-                    Dashboard
-                </h1>
-                <h2 class="splash-subhead " style="color: black;">
-                    Área para membros
-                </h2>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="content">
-    <h2 style="margin-left: 20px;">Meu Painel</h2>
-    <div class="pure-g-r content-ribbon">
-        
-        <div class="pure-u-1-3">
-            <div class="pure-menu pure-menu-open">
-                <a class="pure-menu-heading">Meus Cursos</a>
+<section class="section">
+    <div class="content">
+        <div class="columns">
+            <div class="column">
+                <p>Meus Cursos</p>
                 <ul>
                     <li><a href="#">Curso 1</a></li>
                     <li><a href="#">Curso 2</a></li>
-                    <li class="pure-menu-heading">Minha Conta</li>
+                </ul>
+                <p>Minha Conta</p>
+                <ul>
                     <li><a href="#">Editar Conta</a></li>
                     <li><a href="#">Editar Senha</a></li>
                 </ul>
             </div>
-        </div>
-
-        <div class="pure-u-2-3" >
-            <div class="inner" style="margin-left: 15px;">
+            <div class="column">
                 {% block dashboard_content %}
-                <p><strong>Usuário</strong>: {{ user }}</p>
-                <p><strong>E-mail</strong>: {{ user.email }}</p>
+                <h3><strong>Nome: </strong>{{user.first_name}} {{user.last_name}}</h3>
+                <h3><strong>Usuário</strong> {{ user }}</h3>
+                <h3><strong>E-mail</strong> {{ user.email }}</h3>
                 {% endblock %}
             </div>
         </div>
+
+
     </div>
-</div>
+</section>
 
 {% endblock %}

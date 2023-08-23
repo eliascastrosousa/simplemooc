@@ -7,50 +7,45 @@
 
 {% block 'body' %}
 
-<div class="splash" style="background-color: #83c5be;">
-    <div class="pure-g-r">
-        <div class="pure-u-1">
-            <div class="l-box splash-text">
-                <h1 class="splash-head">
-                    Simplemooc
-                </h1>
-                <h2 class="splash-subhead " style="color: black;">
-                    Área para membros
-                </h2>
-                
-            </div>
-        </div>
+<div class="splash">
+    <div class="l-box splash-text">
+        <h1 class="splash-head">
+            Register
+        </h1>
+        <h2>
+            Área para membros
+        </h2>
+        <br>
+
     </div>
 </div>
+<section class="section">
+    <div class="container">
+        <form class="pure-form pure-form-aligned" method="post">{% csrf_token %}
+        <fieldset>
+            {{form.non_field_errors}}
+            {% for field in form %}
+            <div class="field">
+                {{ field.label_tag }}
+                <div class="control has-icons-left has-icons-right">
+                    {{ field }}
+                </div>
+                <p class="help is-success">
+                    {{ field.errors }}
+                </p>
+            </div>
+            {% endfor %}
 
-<div class="content">
-    <div class="pure-g-r content-ribbon" id="contato">
-        <div class="pure-u-1">
-            <h3>Register</h3>
-            <hr>
 
-            <form  class="pure-form pure-form-aligned" method="post">{% csrf_token %}
-                <fieldset>
-                    {{form.non_field_errors}}
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link">Register</button>
+                </div>
 
-                    {% for field in form %}
-                    <div class="pure-control-group">
-                        {{ field.label_tag }}
-                        {{ field  }}
-                        {{ field.errors  }}
-                    </div>
-                    {% endfor %}
-                    <small>Sua senha deve ter de 8 a 20 caracteres, conter letras maiusculas e minusculas, números e caracteres especiais. </small>
+            </div>
+        </fieldset>
+        </form>
+    </div>
+</section>
 
-                    
-                    <div class="pure-control" style="margin: 6px;">
-                        <button type="submit" class="pure-button primary-button">Registrar</button>
-                    </div>
-
-                </fieldset>
-            </form>
-        </div>
-        
-    </div>        
-</div>
 {% endblock %}

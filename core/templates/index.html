@@ -1,29 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block 'title' %} Pagina Inicial {% endblock %}
-
 {% block 'head' %} <link rel="stylesheet" href="{% static 'css/styles.css' %}" /> {% endblock %}
+{% block 'titlebanner' %} Uma Simples Plataforma de Ensino a Distância {% endblock %}
+{% block 'subtitlebanner' %} O Simple MOOC visa simplificar o ensino a distância, provendo ferramentas objetivas e de fácil uso para cursos a distância. {% endblock %}
+{% block 'botao' %}<a href="#" class="button is-info" >Saiba mais</a>{% endblock %} 
 
 {% block 'body' %}
-    
-    <div class="splash" style="background-color: #83c5be">
-        <div class="pure-g-r">
-            <div class="pure-u-1">
-                <div class="l-box splash-text">
-                    <h1 class="splash-head">
-                        Uma Simples Plataforma de Ensino a Distância
-                    </h1>
-                    <h2 >
-                        O Simple MOOC visa simplificar o ensino a distância, provendo ferramentas objetivas e de fácil uso para cursos a distância.
-                    </h2>
-                    <p>
-                        <a href="#" class="pure-button primary-button">Saiba mais</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="content">
         <div class="pure-g-r content-ribbon">
             <div class="pure-u-2-3">
