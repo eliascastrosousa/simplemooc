@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block 'title' %} Login {% endblock %}
+{% block 'title' %} Register {% endblock %}
 
 {% block 'head' %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}" /> {% endblock %}
@@ -24,29 +24,27 @@
 </div>
 
 <div class="content">
-    <div class="pure-g-r content-ribbon" >
+    <div class="pure-g-r content-ribbon" id="contato">
         <div class="pure-u-1">
-            <h3>Login</h3>
+            <h3>Register</h3>
             <hr>
 
-            <form action="#login" class="pure-form pure-form-aligned" method="post">{% csrf_token %}
+            <form  class="pure-form pure-form-aligned" method="post">{% csrf_token %}
                 <fieldset>
+                    {{form.non_field_errors}}
+
                     {% for field in form %}
                     <div class="pure-control-group">
                         {{ field.label_tag }}
                         {{ field  }}
-
-                        {% if field.errors %}
-                            <ul class="errorlist">
-                                <li>Verifique as Informações e tente novamente.</li>
-                            </ul>
-                        {% endif %}
+                        {{ field.errors  }}
                     </div>
                     {% endfor %}
+                    <small>Sua senha deve ter de 8 a 20 caracteres, conter letras maiusculas e minusculas, números e caracteres especiais. </small>
+
                     
-                    <div class="pure-control">
-                        <button type="submit" class="pure-button primary-button">Entrar</button>
-                        <a href="{% url 'register' %}" class="pure-button success-button">Registrar</a>
+                    <div class="pure-control" style="margin: 6px;">
+                        <button type="submit" class="pure-button primary-button">Registrar</button>
                     </div>
 
                 </fieldset>

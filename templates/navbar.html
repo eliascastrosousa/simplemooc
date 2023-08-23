@@ -1,12 +1,20 @@
 {% load static %}
 <div class="header">
-    <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
+    <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal" style="background-color: #edede9; ">
         <a class="pure-menu-heading" href="{% url  'index' %}">SIMPLE MOOC</a>
         <ul>
+            {% if user.is_authenticated %}
             <li class="pure-menu-selected"><a href="{% url  'index' %}">Início</a></li>
             <li><a href="{% url  'home' %}">Cursos</a></li>
+            <li><a href="{% url  'profile' %}">Painel</a></li>
+            <li><a href="{% url  'logout' %}">Sair</a></li>
+            {% else %}
             <li><a href="{% url  'login' %}">Entrar</a></li>
+            {% endif %}
             <li><a href="#">Contato</a></li>
+
+
+            
         </ul>
     </div>
 </div>
