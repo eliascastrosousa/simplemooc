@@ -1,0 +1,47 @@
+{% extends "profile.html" %}
+{% load static %}
+{% block 'title' %} Editar Usuario {% endblock %}
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" /> {% endblock %}
+
+{% block breadcrumb %}
+{{block.super}}
+<li><a href="#">Editar Conta</a></li>
+{% endblock %}
+
+{% block dashboard_content %}
+<aside class="menu">
+  <p class="menu-label">
+    Editar Conta
+  </p>
+  <hr>
+  <form method="post"> {% csrf_token %}
+    {% if success %}
+    <div class="notification is-success">
+      <p>Os dados foram alterados com sucesso.</p>
+    </div>
+    {% endif %}
+    <ul class="menu-list">
+      {{ form.non_field_errors }}
+      {% for field in form %}
+      <div class="field">
+        {{field.label_tag}}
+        <div class="control has-icons-left has-icons-right">
+          {{field}}
+        </div>
+        {% if field.errors %}
+          <p class="help is-danger">Este email está indisponivel. </p>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button type="submit" class="button is-link">Salvar Modificações</button>
+        </div>
+      </div>
+
+    </ul>
+  </form>
+</aside>
+{% endblock %}

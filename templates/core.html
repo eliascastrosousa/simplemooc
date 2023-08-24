@@ -12,27 +12,12 @@
   <body>
     {% include 'navbar.html' %}
 
-    <div class="splash" style="background-color: #83c5be">
-      <div class="l-box splash-text">
-          <h1 class="splash-head">
-              {% block 'titlebanner' %}{% endblock %}
-          </h1>
-          <hr>
-          <p>
-            {% block 'subtitlebanner' %}{% endblock %}
-          </p>
-          <br>
-          <p>
-            {% block 'botao' %}{% endblock %}
-          </p>
-  
-      </div>
-    </div>
-
     {% block 'body' %}{% endblock %}
     
     {% block 'js' %}{% endblock %}
+
     {% include 'footer.html' %}
 
+    
   </body>
 </html>

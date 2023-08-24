@@ -1,37 +1,63 @@
-{% extends "base.html" %}
+{% extends "core.html" %}
 {% load static %}
 {% block 'title' %} Painel {% endblock %}
 {% block 'head' %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}" /> {% endblock %}
-{% block 'titlebanner' %} Dashboard {% endblock %}
-{% block 'subtitlebanner' %} Área para membros {% endblock %}
+
 {% block 'body' %}
 
 <section class="section">
-    <div class="content">
+    <nav class="breadcrumb " aria-label="breadcrumbs">
+        <ul>
+            {% block breadcrumb %}
+                <li><a href="{% url 'profile' %}">Meu Painel</a></li>
+            {% endblock %}
+        </ul>
+      </nav>
+      <br>
+    <div class="container">
+        
         <div class="columns">
             <div class="column">
-                <p>Meus Cursos</p>
-                <ul>
-                    <li><a href="#">Curso 1</a></li>
-                    <li><a href="#">Curso 2</a></li>
-                </ul>
-                <p>Minha Conta</p>
-                <ul>
-                    <li><a href="#">Editar Conta</a></li>
-                    <li><a href="#">Editar Senha</a></li>
-                </ul>
+                <aside class="menu">
+                    <p class="menu-label">
+                        Meus Cursos
+                    </p>
+                    <hr>
+                    <ul class="menu-list">
+                      <li class="is-white"><a class="button is-info  is-inverted">Curso 1</a></li>
+                      <li><a class="button is-info  is-inverted">Curso 2</a></li>
+                    </ul>
+                </aside>
+                <aside class="menu">
+                    <p class="menu-label">
+                        Minha Conta
+                    </p>
+                    <hr>
+                    <ul class="menu-list">
+                      <li ><a class="button is-danger   is-inverted" href="{% url 'edit' %}">Editar Conta</a></li>
+                      <li><a class="button is-danger   is-inverted" href="{% url 'editpassword' %}">Editar Senha</a></li>
+                    </ul>
+                </aside>
             </div>
             <div class="column">
                 {% block dashboard_content %}
-                <h3><strong>Nome: </strong>{{user.first_name}} {{user.last_name}}</h3>
-                <h3><strong>Usuário</strong> {{ user }}</h3>
-                <h3><strong>E-mail</strong> {{ user.email }}</h3>
+                <aside class="menu">
+                    <p class="menu-label">
+                        Dados Pessoais
+                    </p>
+                    <hr>
+                    <ul class="menu-list">
+                        
+                        <h4><strong>Nome: </strong>{{user.first_name}} {{user.last_name}}</h4>
+                        <h4><strong>Usuário</strong> {{ user }}</h4>
+                        <h4><strong>E-mail</strong> {{ user.email }}</h4>
+                        
+                    </ul>
+                </aside>
                 {% endblock %}
             </div>
         </div>
-
-
     </div>
 </section>
 

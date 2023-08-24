@@ -40,10 +40,11 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
+                    <p class="column is-gapless">Bem vindo, {{user.first_name}}! </p>
                     <a class="button is-primary" href="{% url 'profile' %}">
                         <strong>Painel</strong>
                     </a>
-                    <a class="button is-light" href="{% url 'logout' %}">
+                    <a class="button is-danger" href="{% url 'logout' %}">
                         Sair
                     </a>
                 </div>
