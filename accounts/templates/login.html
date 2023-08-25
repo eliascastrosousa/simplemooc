@@ -10,31 +10,24 @@
 <section class="section">
     
     <div class="container">
-        
-        <form class="pure-form pure-form-aligned" method="post">{% csrf_token %}
-        <fieldset>
+        <form class="box" method="post">{% csrf_token %}
             {{form.non_field_errors}}
             {% for field in form %}
             <div class="field">
-                {{ field.label_tag }}
-                <div class="control has-icons-left has-icons-right">
-                    {{ field }}
-                </div>
-                <p class="help is-success">
-                    {{ field.errors }}
-                </p>
+              <label class="label">{{field.label}}:</label>
+              <div class="control">
+                {{ field }}
+              </div>
             </div>
+            <p class="help is-success">
+                {{ field.errors }}
+            </p>
             {% endfor %}
+            <button class="button is-link">Entrar</button>
+            <a href="{% url 'register'%}" class="button is-success">Cadastrar-se</a>
 
-
-            <div class="field is-grouped">
-                <div class="control">
-                    <button class="button is-link">Login</button>
-                </div>
-
-            </div>
-        </fieldset>
         </form>
+
     </div>
 </section>
 {% endblock %}

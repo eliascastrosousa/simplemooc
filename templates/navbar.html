@@ -1,21 +1,17 @@
 {% load static %}
-<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+<nav class="navbar is-primary is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="{% url  'index' %}">
-            Simplemooc
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/MOOC_-_Massive_Open_Online_Course_logo.svg" width="112" height="28">
         </a>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
+        
     </div>
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item" href="{% url  'index' %}">
-                Home
+                Pagina Inicial
             </a>
             {% if user.is_authenticated %}
             <a class="navbar-item" href="{% url 'home' %}">
@@ -26,11 +22,12 @@
 
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
-                    More
+                    Mais
                 </a>
                 <div class="navbar-dropdown">
+                    
                     <a class="navbar-item">
-                        Contact
+                        Contato
                     </a>
                 </div>
             </div>
@@ -40,8 +37,8 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <p class="column is-gapless">Bem vindo, {{user.first_name}}! </p>
-                    <a class="button is-primary" href="{% url 'profile' %}">
+                    <p>Olá, {{user.first_name}}! &nbsp; </p>
+                    <a class="button is-white" href="{% url 'profile' %}">
                         <strong>Painel</strong>
                     </a>
                     <a class="button is-danger" href="{% url 'logout' %}">
@@ -57,10 +54,10 @@
             <div class="navbar-item">
                 <div class="buttons">
                     <a class="button is-primary" href="{% url 'register' %}">
-                        <strong>Sign up</strong>
+                        <strong>Cadastrar</strong>
                     </a>
                     <a class="button is-light" href="{% url 'login' %}">
-                        Log in
+                        Entrar
                     </a>
                 </div>
             </div>
