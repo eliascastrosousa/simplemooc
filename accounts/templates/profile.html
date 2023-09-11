@@ -36,7 +36,7 @@
                     <hr>
                     <ul class="menu-list">
                       <li ><a class="button is-danger   is-inverted" href="{% url 'edit' %}">Editar Conta</a></li>
-                      <li><a class="button is-danger   is-inverted" href="{% url 'editpassword' %}">Editar Senha</a></li>
+                      <li><a class="button is-danger   is-inverted" href="{% url 'edit_password' %}">Editar Senha</a></li>
                     </ul>
                 </aside>
             </div>
@@ -49,8 +49,8 @@
                     <hr>
                     <ul class="menu-list">
                         
-                        <h4><strong>Nome: </strong>{{user.first_name}} {{user.last_name}}</h4>
-                        <h4><strong>Usuário</strong> {{ user }}</h4>
+                        <h4><strong>Nome: </strong>{{user.firstname}} {{user.lastname}}</h4>
+                        <h4><strong>Usuário</strong> {{ user.username }}</h4>
                         <h4><strong>E-mail</strong> {{ user.email }}</h4>
                         
                     </ul>
