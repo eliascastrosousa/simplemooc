@@ -10,23 +10,38 @@
     <nav class="breadcrumb " aria-label="breadcrumbs">
         <ul>
             {% block breadcrumb %}
-                <li><a href="{% url 'profile' %}">Meu Painel</a></li>
+            <li><a href="{% url 'profile' %}">Meu Painel</a></li>
             {% endblock %}
         </ul>
-      </nav>
-      <br>
+    </nav>
+    <br>
     <div class="container">
-        
+
         <div class="columns">
             <div class="column">
+                {% for message in messages %}
+                <article class="message is-primary">
+                    <div class="message-header">
+                      <p>Aviso</p>
+                      <button class="delete" aria-label="delete"></button>
+                    </div>
+                    <div class="message-body">
+                        {{message}}
+                    </div>
+                  </article>
+                {% endfor %}
+
                 <aside class="menu">
                     <p class="menu-label">
                         Meus Cursos
                     </p>
                     <hr>
                     <ul class="menu-list">
-                      <li class="is-white"><a class="button is-info  is-inverted">Curso 1</a></li>
-                      <li><a class="button is-info  is-inverted">Curso 2</a></li>
+                        {% for curso in enrollment %}
+                        <li class="is-white"><a href="#" class="button is-info  is-inverted">{{ curso.course}}</a></li>
+                        {% empty %}
+                        <li class="is-white">Nenhum curso encontrado.</li>
+                        {% endfor %}
                     </ul>
                 </aside>
                 <aside class="menu">
@@ -35,8 +50,9 @@
                     </p>
                     <hr>
                     <ul class="menu-list">
-                      <li ><a class="button is-danger   is-inverted" href="{% url 'edit' %}">Editar Conta</a></li>
-                      <li><a class="button is-danger   is-inverted" href="{% url 'edit_password' %}">Editar Senha</a></li>
+                        <li><a class="button is-danger   is-inverted" href="{% url 'edit' %}">Editar Conta</a></li>
+                        <li><a class="button is-danger   is-inverted" href="{% url 'edit_password' %}">Editar Senha</a>
+                        </li>
                     </ul>
                 </aside>
             </div>
@@ -48,11 +64,11 @@
                     </p>
                     <hr>
                     <ul class="menu-list">
-                        
+
                         <h4><strong>Nome: </strong>{{user.firstname}} {{user.lastname}}</h4>
                         <h4><strong>Usuário</strong> {{ user.username }}</h4>
                         <h4><strong>E-mail</strong> {{ user.email }}</h4>
-                        
+
                     </ul>
                 </aside>
                 {% endblock %}

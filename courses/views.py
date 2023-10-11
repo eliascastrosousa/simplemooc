@@ -1,20 +1,20 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Course
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Course, Enrollment
 from .forms import ContactCourse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 @login_required()
 def home(request):
     cursos = Course.objects.all()
-    template_name = 'home.html'
     context = {
         'cursos':cursos,
         'nome' : 'elias',
         'sobrenome' : 'castro',
         'email' : 'eliascastrosousa@gmail.com'
     }
-    return render(request, template_name, context)
+    return render(request, 'home.html', context)
 
 @login_required()
 def details(request, slug):
@@ -30,5 +30,19 @@ def details(request, slug):
         form = ContactCourse()
     context['form'] = form 
     context['course'] = course
-    template_name = 'details.html'
-    return render(request, template_name, context)
+    return render(request, 'details.html', context)
+
+@login_required()
+def enrollment(request, slug):
+    course = get_object_or_404(Course, slug=slug)
+    enrollment, created = Enrollment.objects.get_or_create(
+        user = request.user,
+        course=course
+    )
+    if created:
+        enrollment.active()
+        messages.success(request, 'Você foi inscrito no curso com sucesso.')
+    else:
+        messages.info(request, 'Você já está inscrito neste curso!')
+    return redirect('profile')
+

@@ -3,42 +3,40 @@
 
 {% block 'title' %} Cursos {% endblock %}
 
-{% block 'head' %} <link rel="stylesheet" href="{% static 'css/styles.css' %}" /> {% endblock %}
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" /> {% endblock %}
 {% block 'titlebanner' %} Listagem de cursos do SimpleMooc {% endblock %}
 {% block 'subtitlebanner' %} Abaixo a lista de Cursos disponiveis na plataforma {% endblock %}
 
 {% block 'body' %}
-
 <section class="section">
-    <div class="content">
+    <di class="container">
         {% for item in cursos %}
-        <div class="columns">
-            <div class="column">
-                <div>
+        <div class="card mb-4">
+            <div class="card-content">
+                <figure class="image is-128x128">
                     {% if item.image %}
                     <a href="{% url 'details' item.slug %}"> <img src="{{item.image.url}}" alt="{{item.name}}" /> </a>
                     {% else %}
                     <a href="{% url 'details' item.slug %}"> <img src="{% static 'img/notfound.jpeg' %}"
                             alt="{% static 'img/notfound.jpeg' %}" /> </a>
                     {% endif %}
+                  </figure>
+                <div class="media mt-2">
+                    <div class="media-content">
+                        <p class="title is-4">{{item.name}}</p>
+                        <hr>
+                        <p class="subtitle is-6">{{item.descripton|linebreaks}} </p>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="l-box">
-                    <a href="{% url 'details' item.slug %}">
-                        <h4 class="content-subhead">{{item.name}}</h4>
-                    </a>
-                    <h3>{{item.name}}</h3>
-                    <p>
-                        {{item.descripton|linebreaks}}
-                    </p>
-                    <a href="{% url 'details' item.slug %}"  class="button is-info">Ver mais</a>
-                </div>
-            </div>
 
+                <div class="content">
+                    
+                    <a href="{% url 'details' item.slug %}" class="button is-info">Ver mais</a>
+
+                </div>
+            </div>
         </div>
-        <hr>
-
         {% empty %}
         <div class="splash">
             <div class="pure-g-r">

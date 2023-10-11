@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/styles.css' %}" /> {% endblock %}
 {% block 'titlebanner' %} {{course}} {% endblock %}
 {% block 'subtitlebanner' %} {{course.descripton |linebreaks}} {% endblock %}
-{% block 'botao' %}<a href="#" class="button is-info">Inscreva-se</a>{% endblock %}
+{% block 'botao' %}<a href="{% url 'enrollment' course.slug %}" class="button is-info">Inscreva-se</a>{% endblock %}
 
 {% block 'body' %}
 
